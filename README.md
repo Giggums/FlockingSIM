@@ -1,2 +1,2 @@
-# Flocking
+# FlockingSIM
 Flocking Sim
