@@ -5,6 +5,10 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
 
+    //Vector3 lastPos;
+    //Vector3 newPos;
+    //float t;
+
     public FlockAgent agentPrefab;
     List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behaviour;
@@ -33,7 +37,6 @@ public class Flock : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
@@ -52,9 +55,11 @@ public class Flock : MonoBehaviour
             agents.Add(newAgent);
 
         }
+
+        //lastPos = transform.eulerAngles;
+        //NewAngle();
     }
 
-    // Update is called once per frame
     void Update()
     {
         foreach (FlockAgent agent in agents)
@@ -70,7 +75,14 @@ public class Flock : MonoBehaviour
                 move = move.normalized * maxSpeed;
             }
             agent.Move(move);
+
+
         }
+
+        //transform.eulerAngles = Vector3.Lerp(lastPos, newPos, t);
+        //t += 0.01f;
+        //if (t > 1)
+        //    NewAngle();
     }
 
     List<Transform> GetNearbyeObjects(FlockAgent agent)
@@ -86,4 +98,14 @@ public class Flock : MonoBehaviour
         }
         return context;
     }
+
+    //void NewAngle()
+    //{
+    //    lastPos = newPos;
+    //    newPos = new Vector2(
+    //                 Random.Range(-10f, 10f),
+    //                 Random.Range(0f, 360f));
+    //    t = 0;
+    //}
+
 }
