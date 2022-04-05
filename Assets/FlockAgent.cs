@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class FlockAgent : MonoBehaviour
 {
+    //Vector3 lastPos;
+    //Vector3 newPos;
+    //float t;
+    //[SerializeField] [Range(0f, 5f)] float lerpTime;
 
     Flock agentFlock;
     public Flock AgentFlock { get { return agentFlock; } }
@@ -16,6 +20,9 @@ public class FlockAgent : MonoBehaviour
     void Start()
     {
         agentCollider = GetComponent<Collider2D>();
+
+        //lastPos = transform.eulerAngles;
+        //NewAngle();
     }
 
     public void Initialize(Flock flock)
@@ -26,6 +33,25 @@ public class FlockAgent : MonoBehaviour
     public void Move(Vector2 velocity)
     {
         transform.up = velocity;
-        transform.position += (Vector3)velocity * Time.deltaTime;
+        transform.position += (Vector3)velocity * Time.deltaTime ;
     }
+
+	//void Update()
+	//{
+        //transform.eulerAngles = Vector3.Lerp(lastPos, newPos, t);
+        //t += 0.01f;
+        //if (t > 1)
+        //    NewAngle();
+
+    //}
+
+    //void NewAngle()
+    //{
+    //    lastPos = newPos;
+    //    newPos = new Vector2(
+    //                 Random.Range(-10f, 10f),
+    //                 Random.Range(0f, 360f));
+    //    t = 0;
+    //}
+
 }
