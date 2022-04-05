@@ -8,24 +8,13 @@ public class FlockAgent : MonoBehaviour
     //Vector3 lastPos;
     //Vector3 newPos;
     //float t;
+    //[SerializeField] [Range(0f, 5f)] float lerpTime;
 
     Flock agentFlock;
-    public Flock AgentFlock 
-    { 
-        get 
-        { 
-            return agentFlock; 
-        } 
-    }
+    public Flock AgentFlock { get { return agentFlock; } }
 
     Collider2D agentCollider;
-    public Collider2D AgentCollider 
-    { 
-        get 
-        { 
-            return agentCollider; 
-        } 
-    }
+    public Collider2D AgentCollider { get { return agentCollider; } }
 
     // Start is called before the first frame update
     void Start()
@@ -47,13 +36,14 @@ public class FlockAgent : MonoBehaviour
         transform.position += (Vector3)velocity * Time.deltaTime ;
     }
 
-	void Update()
-	{
+	//void Update()
+	//{
         //transform.eulerAngles = Vector3.Lerp(lastPos, newPos, t);
         //t += 0.01f;
         //if (t > 1)
         //    NewAngle();
-    }
+
+    //}
 
     //void NewAngle()
     //{
