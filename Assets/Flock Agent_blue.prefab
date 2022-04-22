@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97a67f119e7bb8e43b7be28eefc79585, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.38875046, g: 0.9056604, b: 0.874689, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 2193367858225167843}
   - component: {fileID: 2193367858225167842}
   - component: {fileID: 2193367858225167845}
-  - component: {fileID: -5726330468738571481}
+  - component: {fileID: 4828252408929792048}
   m_Layer: 9
-  m_Name: Flock Agent
+  m_Name: Flock Agent_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c63fbe18ca1d48498b10a1bed635948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-5726330468738571481
+--- !u!114 &4828252408929792048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfeeca456c1dc0947b35727b6060c0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 3
-  viewAngle: 23
+  viewRadius: 5
+  viewAngle: 90
   targetMask:
     serializedVersion: 2
     m_Bits: 512
