@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class FlockAgent : MonoBehaviour
 {
-    //Vector3 lastPos;
-    //Vector3 newPos;
-    //float t;
-    //[SerializeField] [Range(0f, 5f)] float lerpTime;
+    Vector3 lastPos;
+    Vector3 newPos;
+    float t;
+    [SerializeField] [Range(0f, 5f)] float lerpTime;
 
     Flock agentFlock;
     public Flock AgentFlock { get { return agentFlock; } }
@@ -21,8 +21,8 @@ public class FlockAgent : MonoBehaviour
     {
         agentCollider = GetComponent<Collider2D>();
 
-        //lastPos = transform.eulerAngles;
-        //NewAngle();
+        lastPos = transform.eulerAngles;
+        NewAngle();
     }
 
     public void Initialize(Flock flock)
@@ -36,22 +36,23 @@ public class FlockAgent : MonoBehaviour
         transform.position += (Vector3)velocity * Time.deltaTime ;
     }
 
-	//void Update()
-	//{
-        //transform.eulerAngles = Vector3.Lerp(lastPos, newPos, t);
-        //t += 0.01f;
-        //if (t > 1)
-        //    NewAngle();
+	void Update()
+	{
+        transform.eulerAngles = Vector3.Lerp(lastPos, newPos, t);
+        t += 0.01f;
+        if (t > 1)
+            NewAngle();
 
-    //}
+    }
 
-    //void NewAngle()
-    //{
-    //    lastPos = newPos;
-    //    newPos = new Vector2(
-    //                 Random.Range(-10f, 10f),
-    //                 Random.Range(0f, 360f));
-    //    t = 0;
-    //}
+    void NewAngle()
+    {
+        lastPos = newPos;
+        newPos = new Vector3(
+                     0,
+                     0,
+                     Random.Range(0, 360f));
+        t = 0;
+    }
 
 }
