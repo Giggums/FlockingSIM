@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Collider2D))]
 public class FieldOfView : MonoBehaviour
 {
 	public float viewRadius;
@@ -29,13 +29,15 @@ public class FieldOfView : MonoBehaviour
 	void FindVisibleTargets()
 	{
 		visibleTargets.Clear();
-		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+		Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
 
 		for (int i = 0; i < targetsInViewRadius.Length; i++)
 		{
+			
 			Transform target = targetsInViewRadius[i].transform;
 			Vector3 dirToTarget = (target.position - transform.position).normalized;
-			if (Vector3.Angle(transform.right, dirToTarget) < viewAngle / 2)
+			
+			if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
 			{
 				float disToTarget = Vector3.Distance(transform.position, target.position);
 

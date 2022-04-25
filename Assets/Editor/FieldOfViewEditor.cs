@@ -6,6 +6,7 @@ using UnityEditor;
 public class FieldOfViewEditor : Editor
 {
 
+
 	void OnSceneGUI()
 	{
 		FieldOfView fow = (FieldOfView)target;

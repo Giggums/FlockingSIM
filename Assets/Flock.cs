@@ -2,8 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(FieldOfView))]
 public class Flock : MonoBehaviour
 {
+    //NEW STUFF
+
+
+    //public float viewRadius;
+    //[Range(0, 360)]
+    //public float viewAngle;
+
+    //public LayerMask targetMask;
+    //public LayerMask obstacleMask;
+
+  
+
+
+
+    //public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    //{
+    //    if (!angleIsGlobal)
+    //    {
+    //        angleInDegrees += transform.eulerAngles.z;
+    //    }
+
+    //    return new Vector3(Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0);
+    //}
+
+
+    //IEnumerator GetNearbyeObjects(float delay)
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(delay);
+    //        GetNearbyeObjects(delay);
+    //    }
+    //}
+    //NEW STUFF
+
 
     //Vector3 lastPos;
     //Vector3 newPos;
@@ -39,6 +76,7 @@ public class Flock : MonoBehaviour
 
     void Start()
     {
+        
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -56,6 +94,13 @@ public class Flock : MonoBehaviour
             agents.Add(newAgent);
 
         }
+
+        //NEW STUFF
+
+        //StartCoroutine("GetNearbyeObjects", .2f);
+
+
+        //NEW STUFF
 
         //lastPos = transform.eulerAngles;
         //NewAngle();
@@ -76,8 +121,6 @@ public class Flock : MonoBehaviour
                 move = move.normalized * maxSpeed;
             }
             agent.Move(move);
-
-
         }
 
         //transform.eulerAngles = Vector3.Lerp(lastPos, newPos, t);
@@ -86,27 +129,55 @@ public class Flock : MonoBehaviour
         //    NewAngle();
     }
 
-    List<Transform> GetNearbyeObjects(FlockAgent agent)
-    {
-        List<Transform> context = new List<Transform>();
-        Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighborRadius);
-        foreach (Collider2D c in contextColliders)
-        {
-            if (c != agent.AgentCollider)
-            {
-                context.Add(c.transform);
-            }
-        }
-        return context;
-    }
-
-    //void NewAngle()
+    //List<Transform> GetNearbyeObjects(FlockAgent agent)
     //{
-    //    lastPos = newPos;
-    //    newPos = new Vector2(
-    //                 Random.Range(-10f, 10f),
-    //                 Random.Range(0f, 360f));
-    //    t = 0;
+
+    //    Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(agent.transform.position, viewRadius);
+    //    List<Transform> context = new List<Transform>();
+
+    //    foreach (Collider2D c in targetsInViewRadius)
+    //    {
+    //        for (int i = 0; i < targetsInViewRadius.Length; i++)
+    //        {
+    //            Transform target = targetsInViewRadius[i].transform;
+    //            Vector3 dirToTarget = (target.position - transform.position).normalized;
+    //            if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
+    //            {
+    //                float disToTarget = Vector3.Distance(transform.position, agent.transform.position);
+    //                if (!Physics.Raycast(transform.position, dirToTarget, disToTarget))
+    //                {
+                        
+                        
+    //                     context.Add(c.transform);
+                        
+    //                }
+    //            }
+    //        }
+    //    }
+    //    return context;
     //}
+
+	List<Transform> GetNearbyeObjects(FlockAgent agent)
+	{
+	    List<Transform> context = new List<Transform>();
+	    Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighborRadius);
+	    foreach (Collider2D c in contextColliders)
+	    {
+	        if (c != agent.AgentCollider)
+	        {
+	            context.Add(c.transform);
+	        }
+	    }
+	    return context;
+	}
+
+	//void NewAngle()
+	//{
+	//    lastPos = newPos;
+	//    newPos = new Vector2(
+	//                 Random.Range(-10f, 10f),
+	//                 Random.Range(0f, 360f));
+	//    t = 0;
+	//}
 
 }
